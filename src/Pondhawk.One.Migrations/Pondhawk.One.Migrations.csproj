@@ -20,6 +20,8 @@
         <PackageProjectUrl>https://github.com/pondhawk/migrations</PackageProjectUrl>
         <RepositoryUrl>https://github.com/pondhawk/migrations.git</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <Copyright>Copyright (c) 2025 Pond Hawk Technologies Inc.</Copyright>
     </PropertyGroup>
 
     <ItemGroup>
