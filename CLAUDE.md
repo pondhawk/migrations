@@ -6,32 +6,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```bash
 # Build the solution
-dotnet build fabrica-migrations.sln
+dotnet build pondhawk-migrations.sln
 
-# Run tests (NUnit)
-dotnet test Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj
+# Run tests (xUnit)
+dotnet test tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj
 
 # Run a single test by name
-dotnet test Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj --filter "Test1"
+dotnet test tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj --filter "Should_sort_scripts_by_run_group_order_then_name"
 
 # Run the CLI
-dotnet run --project Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj -- Up -P MySql -C "<conn>" -S ./db-scripts
+dotnet run --project src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj -- Up -P MySql -C "<conn>" -S ./db-scripts
+
+# Pack as dotnet tool
+dotnet pack src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj -c Release -o ./nupkg
 ```
 
 ## Architecture
 
-This is a database schema migration CLI tool built on a vendored fork of [DbUp](https://dbup.readthedocs.io/). It uses **Spectre.Console.Cli** for the CLI framework and **Autofac** for dependency injection.
+This is a database schema migration CLI tool built on a vendored fork of [DbUp](https://dbup.readthedocs.io/). It uses **Spectre.Console.Cli** for the CLI framework and **Microsoft.Extensions.DependencyInjection** for DI. It is packaged as a **dotnet tool** (`pondhawk-migrations`).
 
 ### Project Layout
 
-- **Pondhawk.One.Migrations** — Main CLI application (.NET 9.0 console app, RootNamespace: `Pondhawk.Migrations`)
-- **Pondhawk.One.Migrations.Tests** — NUnit test project
-- **dbup-core** — Vendored DbUp core engine (script discovery, execution, journaling)
-- **dbup-mysql / dbup-postgresql / dbup-sqlite / dbup-sqlserver** — Vendored database provider libraries
+```
+src/
+  Pondhawk.One.Migrations/        — Main CLI application (.NET 9.0, RootNamespace: Pondhawk.Migrations)
+  dbup-core/                      — Vendored DbUp core engine (script discovery, execution, journaling)
+  dbup-mysql/                     — MySQL provider
+  dbup-postgresql/                — PostgreSQL provider
+  dbup-sqlite/                    — SQLite provider
+  dbup-sqlserver/                 — SQL Server provider
+tests/
+  Pondhawk.One.Migrations.Tests/  — xUnit test project (NSubstitute, Shouldly)
+build/                            — Cake Frosting build project (future)
+```
 
 ### Provider Pattern
 
-Database support is plugged in via the `IImplementationModule` interface. Each provider (e.g., `MySqlModule`) is an Autofac `Module` that registers three components:
+Database support is plugged in via the `IImplementationModule` interface. Each provider (e.g., `MySqlModule`) registers three components:
 - `IConnectionManager` — manages database connections
 - `IJournal` — tracks which scripts have been executed (via a version table)
 - `IScriptExecutor` — runs SQL scripts against the database
@@ -49,7 +60,7 @@ Scripts are discovered from the filesystem and run in three groups:
 
 ### Configuration
 
-Settings cascade: `fabrica-one-migrations.yml` file → CLI flags (`-P`, `-C`, `-S`, `-Q`, `-T`). CLI flags override YAML. Validation uses `Pondhawk.Rules` (`SettingsValidationBuilder`).
+Settings cascade: `pondhawk-migrations.yml` file → CLI flags (`-P`, `-C`, `-S`, `-Q`, `-T`). CLI flags override YAML. Validation uses `Pondhawk.Rules` (`SettingsValidationBuilder`).
 
 ### Exit Codes
 
@@ -62,6 +73,5 @@ Settings cascade: `fabrica-one-migrations.yml` file → CLI flags (`-P`, `-C`, `
 
 - **Pondhawk.Watch** — Logging framework (used throughout via `this.EnterMethod()`)
 - **Pondhawk.Rules** — Validation rule engine
-- **Pondhawk.Utilities.Container** — Autofac extensions (`BuildAndStart`)
 - **Spectre.Console / Spectre.Console.Cli** — CLI framework and UI rendering
 - **AWSSDK.RDS** — AWS RDS integration (for snapshot support)

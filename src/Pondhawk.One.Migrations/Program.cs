@@ -9,7 +9,7 @@ using Spectre.Console;
 using Spectre.Console.Cli;
 
 Log.Logger = new LoggerConfiguration()
-    .UseWatch("http://localhost:11000", "FabricaMigrations")
+    .UseWatch("http://localhost:11000", "PondhawkMigrations")
     .CreateLogger();
 
 

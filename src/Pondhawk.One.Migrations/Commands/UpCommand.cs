@@ -76,9 +76,9 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
 
 
          // *************************************************
-        logger.Debug("Attempting to load defaults from fabrica-migrations.yml");
+        logger.Debug("Attempting to load defaults from pondhawk-migrations.yml");
 
-        var defaultsPath = Path.Combine(Environment.CurrentDirectory, "fabrica-one-migrations.yml");
+        var defaultsPath = Path.Combine(Environment.CurrentDirectory, "pondhawk-migrations.yml");
         logger.Debug("Attempting to load defaults file from {DefaultsPath}", defaultsPath);
         var cb = new ConfigurationBuilder()
             .AddYamlFile(defaultsPath, optional: true);

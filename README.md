@@ -34,7 +34,7 @@ dotnet run --project Pondhawk.One.Migrations -- Up ... -Q
 
 ## Configuration
 
-Settings can be provided via CLI flags or a `fabrica-one-migrations.yml` file in the working directory. CLI flags override YAML values.
+Settings can be provided via CLI flags or a `pondhawk-migrations.yml` file in the working directory. CLI flags override YAML values.
 
 ### CLI Flags
 

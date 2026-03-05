@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Pondhawk.One.Migrations\Pondhawk.One.Migrations.csproj" />
+      <ProjectReference Include="..\..\src\Pondhawk.One.Migrations\Pondhawk.One.Migrations.csproj" />
     </ItemGroup>
 
 </Project>
