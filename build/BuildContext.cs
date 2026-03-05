@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Cake.Common;
 using Cake.Core;
 using Cake.Frosting;
@@ -18,10 +19,17 @@ public class BuildContext : FrostingContext
     {
         Solution      = "../pondhawk-migrations.sln";
         Configuration = context.Argument("configuration", "Release");
-        Version       = context.Argument("version", "1.0.0");
         TestProject   = "../tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj";
         MainProject   = "../src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj";
         ArtifactsDir  = "../artifacts";
+
+        var versionJson = JsonDocument.Parse(File.ReadAllText("../version.json"));
+        var major = versionJson.RootElement.GetProperty("major").GetInt32();
+        var minor = versionJson.RootElement.GetProperty("minor").GetInt32();
+        var patch = versionJson.RootElement.GetProperty("patch").GetInt32();
+        var build = context.Argument("build", 0);
+
+        Version = $"{major}.{minor}.{patch}.{build}";
     }
 
 }

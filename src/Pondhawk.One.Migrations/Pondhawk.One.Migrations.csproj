@@ -14,7 +14,7 @@
         <PackAsTool>true</PackAsTool>
         <ToolCommandName>pondhawk-migrations</ToolCommandName>
         <PackageId>Pondhawk.Migrations</PackageId>
-        <Version>1.0.0</Version>
+        <Version>1.0.0</Version> <!-- default; overridden by Cake build -->
         <Authors>Pond Hawk Technologies Inc.</Authors>
         <Description>Database schema migration CLI tool with multi-phase script execution</Description>
         <PackageProjectUrl>https://github.com/pondhawk/migrations</PackageProjectUrl>
@@ -22,7 +22,12 @@
         <RepositoryType>git</RepositoryType>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <Copyright>Copyright (c) 2025 Pond Hawk Technologies Inc.</Copyright>
+        <PackageIcon>pht-small-logo.png</PackageIcon>
     </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\..\pht-small-logo.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\dbup-core\dbup-core.csproj" />

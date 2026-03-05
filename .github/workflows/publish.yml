@@ -1,0 +1,23 @@
+name: Publish to NuGet
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '9.0.x'
+
+      - name: Build, Test, Pack & Publish
+        working-directory: build
+        run: dotnet run -- --target=Publish --build=${{ github.run_number }} --api-key=${{ secrets.NUGET_ORG_API_KEY }}
