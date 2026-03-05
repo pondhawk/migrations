@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.One.Migrations", "Pondhawk.One.Migrations\Pondhawk.One.Migrations.csproj", "{629791B7-1AA8-4A3B-9AD4-AB688F640123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-core", "dbup-core\dbup-core.csproj", "{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-mysql", "dbup-mysql\dbup-mysql.csproj", "{BAEBA7E9-240A-423E-8CC6-C4035DDA84CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-postgresql", "dbup-postgresql\dbup-postgresql.csproj", "{6E86DF68-8D10-409E-A09D-5253922BFBDF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-sqlite", "dbup-sqlite\dbup-sqlite.csproj", "{FCF50AF4-313B-4F5E-8B1D-EBE5AF1871C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-sqlserver", "dbup-sqlserver\dbup-sqlserver.csproj", "{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.One.Migrations.Tests", "Pondhawk.One.Migrations.Tests\Pondhawk.One.Migrations.Tests.csproj", "{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{629791B7-1AA8-4A3B-9AD4-AB688F640123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{629791B7-1AA8-4A3B-9AD4-AB688F640123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{629791B7-1AA8-4A3B-9AD4-AB688F640123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{629791B7-1AA8-4A3B-9AD4-AB688F640123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAEBA7E9-240A-423E-8CC6-C4035DDA84CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAEBA7E9-240A-423E-8CC6-C4035DDA84CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAEBA7E9-240A-423E-8CC6-C4035DDA84CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAEBA7E9-240A-423E-8CC6-C4035DDA84CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E86DF68-8D10-409E-A09D-5253922BFBDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E86DF68-8D10-409E-A09D-5253922BFBDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E86DF68-8D10-409E-A09D-5253922BFBDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E86DF68-8D10-409E-A09D-5253922BFBDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCF50AF4-313B-4F5E-8B1D-EBE5AF1871C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCF50AF4-313B-4F5E-8B1D-EBE5AF1871C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCF50AF4-313B-4F5E-8B1D-EBE5AF1871C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCF50AF4-313B-4F5E-8B1D-EBE5AF1871C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
