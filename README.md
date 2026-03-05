@@ -10,26 +10,26 @@ A database schema migration CLI tool built on a vendored fork of [DbUp](https://
 - **Multiple database providers** — MySQL supported out of the box, with vendored support for PostgreSQL, SQLite, and SQL Server
 - **Configuration cascade** — YAML config file with CLI flag overrides
 - **Validation** — Settings validated via Pondhawk.Rules before execution
-- **Structured logging** — Integrated with Pondhawk.Watch for observability
+- **Structured logging** — Serilog with console sink for warnings and above
 
 ## Quick Start
 
 ```bash
 # Run a migration
-dotnet run --project Pondhawk.One.Migrations -- Up \
+dotnet run --project Pondhawk.Migrations -- Up \
   -P MySql \
   -C "server=localhost; database=mydb; user=root; password=secret;" \
   -S ./db-scripts
 
 # Test mode (show what would run without executing)
-dotnet run --project Pondhawk.One.Migrations -- Up \
+dotnet run --project Pondhawk.Migrations -- Up \
   -P MySql \
   -C "server=localhost; database=mydb; user=root; password=secret;" \
   -S ./db-scripts \
   -T
 
 # Quiet mode (no terminal output)
-dotnet run --project Pondhawk.One.Migrations -- Up ... -Q
+dotnet run --project Pondhawk.Migrations -- Up ... -Q
 ```
 
 ## Configuration
@@ -83,13 +83,16 @@ Within each group, scripts are sorted by name. The `ScriptPattern` must contain 
 ## Project Structure
 
 ```
-Pondhawk.One.Migrations/          # CLI application (.NET 9.0)
-Pondhawk.One.Migrations.Tests/    # xUnit test suite
-dbup-core/                        # Vendored DbUp core engine
-dbup-mysql/                       # MySQL provider
-dbup-postgresql/                  # PostgreSQL provider
-dbup-sqlite/                      # SQLite provider
-dbup-sqlserver/                   # SQL Server provider
+src/
+  Pondhawk.Migrations/           # CLI application (.NET 9.0)
+  dbup-core/                     # Vendored DbUp core engine
+  dbup-mysql/                    # MySQL provider
+  dbup-postgresql/               # PostgreSQL provider
+  dbup-sqlite/                   # SQLite provider
+  dbup-sqlserver/                # SQL Server provider
+tests/
+  Pondhawk.Migrations.Tests/    # xUnit test suite
+build/                           # Cake Frosting build pipeline
 ```
 
 ## Building and Testing
@@ -99,7 +102,7 @@ dbup-sqlserver/                   # SQL Server provider
 dotnet build pondhawk-migrations.sln
 
 # Run tests
-dotnet test Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj
+dotnet test Pondhawk.Migrations.Tests/Pondhawk.Migrations.Tests.csproj
 ```
 
 ## Why a DbUp Fork?
@@ -116,7 +119,7 @@ These changes touch DbUp's internal execution pipeline (sorting, filtering, jour
 ## Dependencies
 
 - [Spectre.Console.Cli](https://spectreconsole.net/) — CLI framework and terminal UI
-- [Pondhawk.Watch](https://github.com/pondhawk) — Structured logging
+- [Serilog](https://serilog.net/) — Structured logging (console sink, warnings and above)
 - [Pondhawk.Rules](https://github.com/pondhawk) — Validation engine
 - [AWSSDK.RDS](https://aws.amazon.com/sdk-for-net/) — AWS RDS snapshot support
 

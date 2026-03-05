@@ -3,13 +3,13 @@
 using Pondhawk.Migrations;
 using Pondhawk.Migrations.Commands;
 using JetBrains.Annotations;
-using Pondhawk.Watch;
 using Serilog;
 using Spectre.Console;
 using Spectre.Console.Cli;
 
 Log.Logger = new LoggerConfiguration()
-    .UseWatch("http://localhost:11000", "PondhawkMigrations")
+    .MinimumLevel.Warning()
+    .WriteTo.Console()
     .CreateLogger();
 
 
@@ -27,7 +27,6 @@ app.Configure(config =>
 
 var result = await app.RunAsync(args);
 
-await Task.Delay(500);
 await Log.CloseAndFlushAsync();
 
 return result;

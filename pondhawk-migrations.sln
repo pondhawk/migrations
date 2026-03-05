@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{A1B2C3D4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{A1B2C3D4-0003-0000-0000-000000000001}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.One.Migrations", "src\Pondhawk.One.Migrations\Pondhawk.One.Migrations.csproj", "{629791B7-1AA8-4A3B-9AD4-AB688F640123}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.Migrations", "src\Pondhawk.Migrations\Pondhawk.Migrations.csproj", "{629791B7-1AA8-4A3B-9AD4-AB688F640123}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-core", "src\dbup-core\dbup-core.csproj", "{EE8099CE-EE0E-4188-9720-B99F4EB6C24F}"
 EndProject
@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-sqlite", "src\dbup-sql
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dbup-sqlserver", "src\dbup-sqlserver\dbup-sqlserver.csproj", "{4EE1B02B-6FB5-4F75-8CCD-30050C4F9590}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.One.Migrations.Tests", "tests\Pondhawk.One.Migrations.Tests\Pondhawk.One.Migrations.Tests.csproj", "{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pondhawk.Migrations.Tests", "tests\Pondhawk.Migrations.Tests\Pondhawk.Migrations.Tests.csproj", "{5DB5E430-64EE-44BF-BEAC-71856CB2E1D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "build", "build\build.csproj", "{B1C2D3E4-0004-0000-0000-000000000001}"
 EndProject

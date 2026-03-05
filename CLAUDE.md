@@ -9,16 +9,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 dotnet build pondhawk-migrations.sln
 
 # Run tests (xUnit)
-dotnet test tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj
+dotnet test tests/Pondhawk.Migrations.Tests/Pondhawk.Migrations.Tests.csproj
 
 # Run a single test by name
-dotnet test tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj --filter "Should_sort_scripts_by_run_group_order_then_name"
+dotnet test tests/Pondhawk.Migrations.Tests/Pondhawk.Migrations.Tests.csproj --filter "Should_sort_scripts_by_run_group_order_then_name"
 
 # Run the CLI
-dotnet run --project src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj -- Up -P MySql -C "<conn>" -S ./db-scripts
+dotnet run --project src/Pondhawk.Migrations/Pondhawk.Migrations.csproj -- Up -P MySql -C "<conn>" -S ./db-scripts
 
 # Pack as dotnet tool
-dotnet pack src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj -c Release -o ./nupkg
+dotnet pack src/Pondhawk.Migrations/Pondhawk.Migrations.csproj -c Release -o ./nupkg
 ```
 
 ## Architecture
@@ -29,14 +29,14 @@ This is a database schema migration CLI tool built on a vendored fork of [DbUp](
 
 ```
 src/
-  Pondhawk.One.Migrations/        — Main CLI application (.NET 9.0, RootNamespace: Pondhawk.Migrations)
+  Pondhawk.Migrations/        — Main CLI application (.NET 9.0, RootNamespace: Pondhawk.Migrations)
   dbup-core/                      — Vendored DbUp core engine (script discovery, execution, journaling)
   dbup-mysql/                     — MySQL provider
   dbup-postgresql/                — PostgreSQL provider
   dbup-sqlite/                    — SQLite provider
   dbup-sqlserver/                 — SQL Server provider
 tests/
-  Pondhawk.One.Migrations.Tests/  — xUnit test project (NSubstitute, Shouldly)
+  Pondhawk.Migrations.Tests/  — xUnit test project (NSubstitute, Shouldly)
 build/                            — Cake Frosting build project (future)
 ```
 
@@ -71,7 +71,7 @@ Settings cascade: `pondhawk-migrations.yml` file → CLI flags (`-P`, `-C`, `-S`
 
 ## Key Dependencies
 
-- **Pondhawk.Watch** — Logging framework (used throughout via `this.EnterMethod()`)
+- **Serilog + Serilog.Sinks.Console** — Structured logging (warnings and above)
 - **Pondhawk.Rules** — Validation rule engine
 - **Spectre.Console / Spectre.Console.Cli** — CLI framework and UI rendering
 - **AWSSDK.RDS** — AWS RDS integration (for snapshot support)

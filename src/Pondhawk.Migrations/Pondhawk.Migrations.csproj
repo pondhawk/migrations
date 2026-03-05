@@ -45,7 +45,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.3" />
       <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.1.0" />
       <PackageReference Include="Pondhawk.Rules" Version="1.0.24" />
-      <PackageReference Include="Pondhawk.Watch" Version="1.0.24" />
+      <PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
       <PackageReference Include="Serilog" Version="4.3.0" />
       <PackageReference Include="Spectre.Console.Cli" Version="0.51.1" />
     </ItemGroup>

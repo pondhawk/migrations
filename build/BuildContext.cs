@@ -19,8 +19,8 @@ public class BuildContext : FrostingContext
     {
         Solution      = "../pondhawk-migrations.sln";
         Configuration = context.Argument("configuration", "Release");
-        TestProject   = "../tests/Pondhawk.One.Migrations.Tests/Pondhawk.One.Migrations.Tests.csproj";
-        MainProject   = "../src/Pondhawk.One.Migrations/Pondhawk.One.Migrations.csproj";
+        TestProject   = "../tests/Pondhawk.Migrations.Tests/Pondhawk.Migrations.Tests.csproj";
+        MainProject   = "../src/Pondhawk.Migrations/Pondhawk.Migrations.csproj";
         ArtifactsDir  = "../artifacts";
 
         var versionJson = JsonDocument.Parse(File.ReadAllText("../version.json"));

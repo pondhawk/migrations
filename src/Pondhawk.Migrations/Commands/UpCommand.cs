@@ -6,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pondhawk.Rules;
 using Pondhawk.Rules.Validators;
-using Pondhawk.Watch;
 using Serilog;
 using Spectre.Console.Cli;
 
@@ -37,7 +36,6 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
 
         [CommandOption("-C|--connection")]
         [Description("The Db connection string")]
-        [Sensitive]
         public string ConnectionString { get; set; } = string.Empty;
 
         [CommandOption("-S|--scripts-path")]
@@ -68,7 +66,6 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
     public override async Task<int> ExecuteAsync(CommandContext context, UpSettings settings)
     {
 
-        using var _ = Logger.EnterMethod();
         var logger = Logger;
 
         UiHelper.ShowHeader();
@@ -119,7 +116,7 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
 
         }
 
-        logger.LogObject("Settings", settings);
+        logger.Debug("Settings: {@Settings}", settings);
 
         // *************************************************
         logger.Debug("Attempting to Validate Settings");
@@ -149,7 +146,7 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
             ShowProgress         = !settings.Quiet
         };
 
-        logger.LogObject("CoreModule", core);
+        logger.Debug("CoreModule: {@CoreModule}", core);
 
 
 
@@ -246,7 +243,7 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
 
             var couldHaveRun = service.Engine.GetScriptsToExecute();
 
-            logger.LogObject("CouldHaveRun", couldHaveRun);
+            logger.Debug("CouldHaveRun: {@CouldHaveRun}", couldHaveRun);
 
             foreach( var s in couldHaveRun )
                 UiHelper.ShowProgress( $"In Test Mode - Would've run: ({s.Name})", false );
@@ -267,13 +264,13 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
 
         UiHelper.Stop();
 
-        logger.LogObject("Result", result);
+        logger.Debug("Result: {@Result}", result);
 
         if( !result.Successful )
         {
 
             logger.Error("Failed to perform DB schema upgrade");
-            logger.LogObject("StatusMessages", service.Listener.StatusMessages);
+            logger.Debug("StatusMessages: {@StatusMessages}", service.Listener.StatusMessages);
 
             foreach( var msg in service.Listener.StatusMessages )
                 UiHelper.ShowError(msg);
@@ -297,7 +294,7 @@ public class UpCommand : AsyncCommand<UpCommand.UpSettings>
     private (bool valid, IReadOnlyList<RuleEvent> violations) ValidateSettings(UpSettings settings)
     {
 
-        using var _ = Logger.EnterMethod();
+        Logger.Debug("Entering ValidateSettings");
 
 
         // *************************************************
