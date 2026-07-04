@@ -6,7 +6,7 @@
     <Company>DbUp Contributors</Company>
     <Product>DbUp</Product>
     <Copyright>Copyright © DbUp Contributors 2015</Copyright>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <AssemblyName>dbup-sqlserver</AssemblyName>
     <RootNamespace>DbUp.SqlServer</RootNamespace>
     <PackageId>dbup-sqlserver</PackageId>
